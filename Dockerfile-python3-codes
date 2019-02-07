@@ -9,16 +9,17 @@ RUN wget https://github.com/amusecode/amuse/archive/release-11.2.tar.gz
 RUN tar -xf release-11.2.tar.gz
 RUN mv amuse-release-11.2/ /amuse/
 
-RUN apt-get install -y build-essential gfortran python-dev \
+RUN apt-get install -y build-essential gfortran python3-dev \
   mpich libmpich-dev \
   libgsl0-dev cmake libfftw3-3 libfftw3-dev \
   libgmp3-dev libmpfr4 libmpfr-dev \
   libhdf5-serial-dev hdf5-tools \
-  python-nose python-numpy python-setuptools python-docutils \
-  python-h5py python-setuptools git openjdk-8-jdk python-pip
+  python3-nose python3-numpy python3-setuptools python3-docutils \
+  python3-h5py python3-setuptools git openjdk-8-jdk python3-pip
 
-RUN pip install cython scipy matplotlib==2.02
-RUN easy_install mpi4py
+RUN pip3 install cython scipy matplotlib mpi4py
+RUN pip3 install numpy
+#RUN easy_install3 mpi4py
 
 #RUN mkdir /amuse/prerequisites
 
@@ -30,10 +31,10 @@ ENV F77 gfortran
 
 #RUN cd /amuse/doc/install && ./install-python.sh 
 #RUN cd /amuse/doc/install && ./install.py install
+RUN whereis python3
+RUN cd /amuse/ && ./configure PYTHON=/usr/bin/python3
 
-RUN cd /amuse/ && ./configure
-
-RUN cd /amuse/ && make
+RUN cd /amuse/ && make build3 DOWNLOAD_CODES=1
 
 #RUN cd /amuse/ && mpiexec nosetests -v
 
