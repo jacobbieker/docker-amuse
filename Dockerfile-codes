@@ -33,7 +33,7 @@ ENV F77 gfortran
 
 RUN cd /amuse/ && ./configure
 
-RUN cd /amuse/ && make
+RUN cd /amuse/ && make DOWNLOAD_CODES=1
 
 RUN cd /amuse/ && mpiexec nosetests -v
 
