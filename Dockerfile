@@ -35,7 +35,7 @@ RUN cd /amuse/ && ./configure
 
 RUN cd /amuse/ && make
 
-RUN cd /amuse/ && mpiexec nosetests -v
+#RUN cd /amuse/ && mpiexec nosetests -v
 
 ENTRYPOINT ["/amuse/"]
 CMD ["amuse.sh"]
