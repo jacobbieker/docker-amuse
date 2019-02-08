@@ -17,25 +17,16 @@ RUN apt-get install -y build-essential gfortran python-dev \
   python-nose python-numpy python-setuptools python-docutils \
   python-h5py python-setuptools git openjdk-8-jdk python-pip
 
-RUN pip install cython scipy matplotlib astropy
+RUN pip install --upgrade pip
+RUN pip install cython scipy
 RUN easy_install mpi4py
 
-#RUN mkdir /amuse/prerequisites
-
-#ENV PREFIX /amuse/prerequisites
-#ENV PATH ${PREFIX}/bin:${PATH}
-#ENV LD_LIBRARY_PATH ${PREFIX}/lib:${LD_LIBRARY_PATH}
 ENV FC gfortran
 ENV F77 gfortran
-
-#RUN cd /amuse/doc/install && ./install-python.sh 
-#RUN cd /amuse/doc/install && ./install.py install
 
 RUN cd /amuse/ && ./configure
 
 RUN cd /amuse/ && make
-
-#RUN cd /amuse/ && mpiexec nosetests -v
 
 ENTRYPOINT ["/amuse/"]
 CMD ["amuse.sh"]
