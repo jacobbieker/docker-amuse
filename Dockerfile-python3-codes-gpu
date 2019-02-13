@@ -24,9 +24,9 @@ ENV FC gfortran
 ENV F77 gfortran
 
 RUN whereis python3
-RUN cd /amuse/ && ./configure --enable-cuda PYTHON=/usr/bin/python3
+RUN cd /amuse/ && ./configure --enable-cuda PYTHON=/usr/bin/python3 --with-hdf5=/usr/lib/x86_64-linux-gnu/hdf5/serial
 
 RUN cd /amuse/ && make build3 DOWNLOAD_CODES=1
 
-ENTRYPOINT ["/amuse/"]
+ENV PATH /amuse:${PATH}
 CMD ["amuse.sh"]

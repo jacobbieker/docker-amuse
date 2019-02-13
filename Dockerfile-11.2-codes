@@ -23,8 +23,9 @@ RUN easy_install mpi4py
 ENV FC gfortran
 ENV F77 gfortran
 
-RUN cd /amuse/ && ./configure
+RUN cd /amuse/ && ./configure --with-hdf5=/usr/lib/x86_64-linux-gnu/hdf5/serial
 
 RUN cd /amuse/ && make DOWNLOAD_CODES=1
+ENV PATH /amuse:${PATH}
 
 CMD ["/amuse/amuse.sh"]

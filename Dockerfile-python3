@@ -32,7 +32,7 @@ ENV F77 gfortran
 #RUN cd /amuse/doc/install && ./install-python.sh 
 #RUN cd /amuse/doc/install && ./install.py install
 RUN whereis python3
-RUN cd /amuse/ && ./configure PYTHON=/usr/bin/python3
+RUN cd /amuse/ && ./configure PYTHON=/usr/bin/python3 --with-hdf5=/usr/lib/x86_64-linux-gnu/hdf5/serial
 
 RUN cd /amuse/ && make build3
 
@@ -42,5 +42,5 @@ RUN cd /amuse/build/lib/amuse && ls -a
 
 RUN cd /home/ && ls
 
-ENTRYPOINT ["/amuse/"]
+ENV PATH /amuse:${PATH}
 CMD ["amuse.sh"]

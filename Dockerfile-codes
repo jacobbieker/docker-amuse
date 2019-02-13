@@ -31,11 +31,11 @@ ENV F77 gfortran
 #RUN cd /amuse/doc/install && ./install-python.sh 
 #RUN cd /amuse/doc/install && ./install.py install
 
-RUN cd /amuse/ && ./configure
+RUN cd /amuse/ && ./configure --with-hdf5=/usr/lib/x86_64-linux-gnu/hdf5/serial
 
 RUN cd /amuse/ && make DOWNLOAD_CODES=1
 
 #RUN cd /amuse/ && mpiexec nosetests -v
 
-ENTRYPOINT ["/amuse/"]
+ENV PATH /amuse:${PATH}
 CMD ["amuse.sh"]
