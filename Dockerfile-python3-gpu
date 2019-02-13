@@ -28,5 +28,5 @@ RUN cd /amuse/ && ./configure --enable-cuda PYTHON=/usr/bin/python3 --with-hdf5=
 
 RUN cd /amuse/ && make build3
 
-ENV PATH /amuse:${PATH}
+ENV PATH /amuse/:${PATH}
 CMD ["amuse.sh"]

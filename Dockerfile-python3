@@ -42,5 +42,5 @@ RUN cd /amuse/build/lib/amuse && ls -a
 
 RUN cd /home/ && ls
 
-ENV PATH /amuse:${PATH}
+ENV PATH /amuse/:${PATH}
 CMD ["amuse.sh"]

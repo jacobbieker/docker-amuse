@@ -37,5 +37,5 @@ RUN cd /amuse/ && make
 
 #RUN cd /amuse/ && mpiexec nosetests -v
 
-ENV PATH /amuse:${PATH}
+ENV PATH /amuse/:${PATH}
 CMD ["amuse.sh"]

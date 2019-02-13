@@ -27,5 +27,5 @@ RUN cd /amuse/ && ./configure --enable-cuda --with-hdf5=/usr/lib/x86_64-linux-gn
 
 RUN cd /amuse/ && make DOWNLOAD_CODES=1
 
-ENV PATH /amuse:${PATH}
+ENV PATH /amuse/:${PATH}
 CMD ["amuse.sh"]

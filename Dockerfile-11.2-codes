@@ -26,6 +26,6 @@ ENV F77 gfortran
 RUN cd /amuse/ && ./configure --with-hdf5=/usr/lib/x86_64-linux-gnu/hdf5/serial
 
 RUN cd /amuse/ && make DOWNLOAD_CODES=1
-ENV PATH /amuse:${PATH}
+ENV PATH /amuse/:${PATH}
 
-CMD ["/amuse/amuse.sh"]
+CMD ["amuse.sh"]
