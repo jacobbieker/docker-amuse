@@ -37,8 +37,7 @@ RUN cd /amuse/ && ./configure PYTHON=/usr/bin/python3 --with-hdf5=/usr/lib/x86_6
 RUN cd /amuse/ && make build3 DOWNLOAD_CODES=1
 
 #RUN cd /amuse/ && mpiexec nosetests -v
-ENV PATH /amuse:${PATH}
-RUN cd / && ls -a
-RUN cd /amuse/ && ls
-#ENTRYPOINT ["/amuse/"]
-CMD ["amuse.sh"]
+RUN cd /amuse/ && python3 setup.py install
+
+ENV PATH /amuse/:${PATH}
+CMD ["python3"]

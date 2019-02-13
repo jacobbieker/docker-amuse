@@ -42,5 +42,7 @@ RUN cd /amuse/build/lib/amuse && ls -a
 
 RUN cd /home/ && ls
 
+RUN cd /amuse/ && python3 setup.py install
+
 ENV PATH /amuse/:${PATH}
-CMD ["amuse.sh"]
+CMD ["python3"]
