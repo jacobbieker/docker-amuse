@@ -27,5 +27,4 @@ RUN cd /amuse/ && ./configure
 
 RUN cd /amuse/ && make DOWNLOAD_CODES=1
 
-ENTRYPOINT ["/amuse/"]
-CMD ["amuse.sh"]
+CMD ["/amuse/amuse.sh"]
