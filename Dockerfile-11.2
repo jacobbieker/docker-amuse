@@ -28,5 +28,9 @@ RUN cd /amuse/ && ./configure
 
 RUN cd /amuse/ && make
 
-ENTRYPOINT ["/amuse/"]
+RUN cd /amuse/ && ls
+
+ENV PATH /amuse/:${PATH}
+
+#ENTRYPOINT ["/amuse/"]
 CMD ["amuse.sh"]

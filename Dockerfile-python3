@@ -38,5 +38,9 @@ RUN cd /amuse/ && make build3
 
 #RUN cd /amuse/ && mpiexec nosetests -v
 
+RUN cd /amuse/build/lib/amuse && ls -a
+
+RUN cd /home/ && ls
+
 ENTRYPOINT ["/amuse/"]
 CMD ["amuse.sh"]
